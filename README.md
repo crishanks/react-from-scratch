@@ -1,1 +1,1 @@
-# webpack-from-scratch
+# react-from-scratch
