@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import FormContainer from './js/components/containers/FormContainer.jsx';
+import App from './App';
 
 const root = document.getElementById("root");
-root ? ReactDom.render(<FormContainer/>, root) : null;
+root ? ReactDom.render(<App/>, root) : null;
+
+module.hot.accept();

@@ -1,9 +1,10 @@
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   module: {
     //default entry point is ./src/index.js
-    //default output point is ./src/index.html
+    //default output point is ./dist/index.html
     rules: [
       {
         test: /\.(js|jsx)|$/,
@@ -19,13 +20,27 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
-  ]
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    hot: true
+  }
 };
